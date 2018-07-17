@@ -8,9 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     @IBOutlet weak var actionButton: RoundedShadowButton!
+    
+    weak var delegate: CenterVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
