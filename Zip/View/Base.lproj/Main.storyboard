@@ -31,9 +31,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ecP-ol-kGu">
                                 <rect key="frame" x="16" y="40" width="343" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cE4-6x-mKQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cE4-6x-mKQ" userLabel="MenuButton">
                                         <rect key="frame" x="0.0" y="3" width="30" height="24"/>
                                         <state key="normal" image="menuSliderBtn"/>
+                                        <connections>
+                                            <action selector="menuButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bMP-rP-0uu"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ut-mE-qNG">
                                         <rect key="frame" x="147.5" y="0.0" width="48" height="30"/>

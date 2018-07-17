@@ -12,10 +12,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    private var containerVC = ContainerViewController()
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        containerVC = ContainerViewController()
+    // Container view root view controller
+        window?.rootViewController = containerVC
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

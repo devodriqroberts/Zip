@@ -23,18 +23,25 @@ var showViewController: ShowWhichVC = .homeViewController
 class ContainerViewController: UIViewController {
     
     var homeViewController: HomeViewController!
-    var currentState: SlideOutState = .collapsed
+    var currentState: SlideOutState = .collapsed {
+        didSet {
+            let showShadow = (currentState != .collapsed)
+            
+            showShadowForCenterViewController(status: showShadow)
+        }
+    }
     var drawerVC: PanelDrawerViewController!
     var isHidden = false
     var centerController: UIViewController!
     let centerPanelExpandedOffset: CGFloat = 160
-
+    var tap: UITapGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initCenter(screen: showViewController)
-
+        
     }
-
+    
     func initCenter(screen: ShowWhichVC) {
         var presentingController: UIViewController
         
@@ -55,8 +62,16 @@ class ContainerViewController: UIViewController {
         addChildViewController(centerController)
         centerController.didMove(toParentViewController: self)
     }
-
-
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return UIStatusBarAnimation.slide
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return isHidden
+    }
+    
+    
 }
 
 private extension UIStoryboard {
@@ -100,25 +115,96 @@ extension ContainerViewController: CenterVCDelegate {
     }
     
     
-    func animateLeftPanelDrawer(shouldExpand: Bool) {
+    @objc func animateLeftPanelDrawer(shouldExpand: Bool) {
         if shouldExpand {
             isHidden = !isHidden
             animateStatusBar()
             
-            setupWhiteCoverView()
+            setupCoverView()
             currentState = .leftDrawerExpanded
             
+            animateCenterPanelXPosition(targetPosition: centerController.view.frame.width - centerPanelExpandedOffset)
         } else {
             isHidden = !isHidden
             animateStatusBar()
             
-            hideWhiteCoverView()
+            hideCoverView()
+            animateCenterPanelXPosition(targetPosition: 0) { (finished) in
+                if finished == true {
+                    self.currentState = .collapsed
+                    self.drawerVC = nil
+                }
+            }
         }
     }
     
-    func animateCenterPanelXPosition(targetPosition: CGFloat, completion: (Bool) -> Void)! = nil) {
-    //MARK:- Stopped at min 41 of video 5
+    func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.centerController.view.frame.origin.x = targetPosition
+        }, completion: completion)
+    }
+    
+    //MARK:- Animate status bar
+    func animateStatusBar() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
+    }
+    
+    //MARK:- Setup up cover view for sliding animation
+    func setupCoverView() {
+        let coverView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        coverView.alpha = 0.0
+        coverView.backgroundColor = UIColor(displayP3Red: 0/255, green: 143/255, blue: 0/255, alpha: 1)
+        coverView.tag = 20
+        
+        self.centerController.view.addSubview(coverView)
+        UIView.animate(withDuration: 0.2) {
+            coverView.alpha = 0.75
+        }
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(animateLeftPanelDrawer(shouldExpand:)))
+        tap.numberOfTapsRequired = 1
+        
+        self.centerController.view.addGestureRecognizer(tap)
+    }
+    
+    //MARK:- Hide cover view for sliding animation
+    func hideCoverView() {
+        centerController.view.removeGestureRecognizer(tap)
+        for subview in self.centerController.view.subviews {
+            if subview.tag == 20 {
+                UIView.animate(withDuration: 0.2, animations: {
+                    subview.alpha = 0.0
+                }) { (finished) in
+                    subview.removeFromSuperview()
+                }
+            }
+        }
+    }
+    
+    //Setup shadow for cover view
+    func showShadowForCenterViewController(status: Bool) {
+        if status {
+            centerController.view.layer.shadowOpacity = 0.6
+        } else {
+            centerController.view.layer.shadowOpacity = 0.0
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

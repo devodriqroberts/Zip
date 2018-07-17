@@ -24,4 +24,7 @@ class HomeViewController: UIViewController {
         actionButton.animateButton(shouldLoad: true, withMessage: nil)
     }
 
+    @IBAction func menuButtonPressed(_ sender: UIButton) {
+        delegate?.toggleLeftDrawer()
+    }
 }
