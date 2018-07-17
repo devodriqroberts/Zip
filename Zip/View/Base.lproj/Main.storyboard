@@ -22,11 +22,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="23U-YZ-p7h">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xA-xA-mn5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xA-xA-mn5" customClass="GradientView" customModule="Zip" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="425" height="130"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="Klr-Yx-2cz"/>
+                                    <constraint firstAttribute="height" constant="130" id="Klr-Yx-2cz"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ecP-ol-kGu">
@@ -53,7 +52,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Alr-lg-e6S">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Alr-lg-e6S" customClass="RoundImageView" customModule="Zip" customModuleProvider="target">
                                         <rect key="frame" x="313" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="jA1-mB-kMW"/>
@@ -64,27 +63,42 @@
                                     <constraint firstAttribute="height" constant="30" id="j41-Bf-Eyd"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SV5-DZ-1Pa">
-                                <rect key="frame" x="16" y="563" width="343" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-M9-JsT">
+                                <rect key="frame" x="0.0" y="538" width="375" height="85"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SV5-DZ-1Pa" customClass="RoundedShadowButton" customModule="Zip" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="5" width="343" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="HTd-eh-Ii1"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Uc3-GT-igW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
+                                        <state key="normal" title="Request Ride">
+                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EaX-uN-ZlC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="HTd-eh-Ii1"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Uc3-GT-igW"/>
+                                    <constraint firstItem="SV5-DZ-1Pa" firstAttribute="leading" secondItem="wW4-M9-JsT" secondAttribute="leading" constant="16" id="17t-WB-ELA"/>
+                                    <constraint firstAttribute="height" constant="85" id="94j-be-lCy"/>
+                                    <constraint firstItem="SV5-DZ-1Pa" firstAttribute="centerX" secondItem="wW4-M9-JsT" secondAttribute="centerX" id="GYf-iB-Qxv"/>
+                                    <constraint firstItem="SV5-DZ-1Pa" firstAttribute="top" secondItem="wW4-M9-JsT" secondAttribute="top" constant="5" id="HmH-xU-vJd"/>
+                                    <constraint firstAttribute="trailing" secondItem="SV5-DZ-1Pa" secondAttribute="trailing" constant="16" id="Ylq-lw-3Um"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                <state key="normal" title="Request Ride">
-                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsc-l9-XM4">
-                                <rect key="frame" x="299" y="487" width="60" height="60"/>
+                                <rect key="frame" x="299" y="473" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="AP8-88-q1W"/>
                                     <constraint firstAttribute="width" constant="60" id="AvN-gg-Hbc"/>
                                 </constraints>
                                 <state key="normal" image="centerMapBtn"/>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2u-JD-scS">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2u-JD-scS" customClass="RoundedShadowView" customModule="Zip" customModuleProvider="target">
                                 <rect key="frame" x="16" y="88" width="343" height="84"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AOb-4s-uq3">
@@ -96,13 +110,18 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ndl-ci-a8T">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="25"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yX-cP-nBi">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yX-cP-nBi" customClass="CircleViews" customModule="Zip" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="5" width="15" height="15"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="b6W-vz-fsN"/>
                                                                     <constraint firstAttribute="width" constant="15" id="vnV-BC-bbg"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" red="0.15105047638364652" green="0.34031963832487311" blue="0.21189784113533647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="My Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mnL-lE-Mp7">
                                                                 <rect key="frame" x="25" y="2" width="275" height="21"/>
@@ -126,13 +145,18 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vw0-xt-uc8">
                                                         <rect key="frame" x="0.0" y="43" width="300" height="25"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVz-jj-dRj">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVz-jj-dRj" customClass="CircleViews" customModule="Zip" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="5" width="15" height="15"/>
                                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="FzB-P2-X0R"/>
                                                                     <constraint firstAttribute="width" constant="15" id="r1l-ne-4nQ"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where to?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DUs-da-xWI">
                                                                 <rect key="frame" x="25" y="2" width="275" height="21"/>
@@ -160,32 +184,35 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="p2u-JD-scS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2ff-Ro-S68"/>
-                            <constraint firstItem="SV5-DZ-1Pa" firstAttribute="top" secondItem="Bsc-l9-XM4" secondAttribute="bottom" constant="16" id="3gX-A8-YcS"/>
-                            <constraint firstItem="SV5-DZ-1Pa" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="4TK-d4-J27"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SV5-DZ-1Pa" secondAttribute="trailing" constant="16" id="9td-fZ-BPl"/>
+                            <constraint firstItem="wW4-M9-JsT" firstAttribute="top" secondItem="Bsc-l9-XM4" secondAttribute="bottom" constant="5" id="35G-Zt-Qpm"/>
                             <constraint firstItem="ecP-ol-kGu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="Ded-wi-B8C"/>
+                            <constraint firstItem="wW4-M9-JsT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fgv-Oc-9yU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p2u-JD-scS" secondAttribute="trailing" constant="16" id="GTR-5z-cHt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bsc-l9-XM4" secondAttribute="trailing" constant="16" id="Ig3-RS-fzF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ecP-ol-kGu" secondAttribute="trailing" constant="16" id="KOY-Hw-NEd"/>
                             <constraint firstItem="0xA-xA-mn5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Kam-E1-eew"/>
+                            <constraint firstItem="wW4-M9-JsT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Lal-wc-hKz"/>
+                            <constraint firstItem="wW4-M9-JsT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OOv-PJ-9Ph"/>
                             <constraint firstItem="ecP-ol-kGu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ORm-gF-uoq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="23U-YZ-p7h" secondAttribute="trailing" id="Ov6-f5-aoh"/>
                             <constraint firstItem="p2u-JD-scS" firstAttribute="top" secondItem="ecP-ol-kGu" secondAttribute="bottom" constant="18" id="P2I-fO-Dyy"/>
                             <constraint firstItem="23U-YZ-p7h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V33-GP-enZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0xA-xA-mn5" secondAttribute="trailing" id="gKr-4Q-39P"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0xA-xA-mn5" secondAttribute="trailing" constant="-50" id="gKr-4Q-39P"/>
                             <constraint firstItem="23U-YZ-p7h" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="icJ-fc-Izo"/>
                             <constraint firstItem="p2u-JD-scS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="k1K-u3-5Fr"/>
                             <constraint firstAttribute="bottom" secondItem="23U-YZ-p7h" secondAttribute="bottom" id="uHt-KA-uh6"/>
-                            <constraint firstItem="SV5-DZ-1Pa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vce-tV-kMv"/>
                             <constraint firstItem="0xA-xA-mn5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zoG-UR-3PU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="actionButton" destination="SV5-DZ-1Pa" id="seB-3p-abJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,5 +222,6 @@
     <resources>
         <image name="centerMapBtn" width="62" height="62"/>
         <image name="menuSliderBtn" width="30" height="24"/>
+        <image name="sample-photo" width="320" height="320"/>
     </resources>
 </document>
