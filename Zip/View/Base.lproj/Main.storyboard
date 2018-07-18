@@ -253,7 +253,7 @@
                                     <color key="titleColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="signupLoginButtonPressed:" destination="k2d-9Y-6si" eventType="touchUpInside" id="2qh-KR-jvF"/>
+                                    <action selector="signupLoginButtonPressed:" destination="k2d-9Y-6si" eventType="touchUpInside" id="LFM-zd-Jok"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14f-et-NeH">
