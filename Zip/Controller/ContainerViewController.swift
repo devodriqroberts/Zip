@@ -159,9 +159,7 @@ extension ContainerViewController: CenterVCDelegate {
         coverView.tag = 20
         
         self.centerController.view.addSubview(coverView)
-        UIView.animate(withDuration: 0.2) {
-            coverView.alpha = 0.75
-        }
+        coverView.fadeTo(alpha: 0.75, withDuration: 0.2)
         
         tap = UITapGestureRecognizer(target: self, action: #selector(animateLeftPanelDrawer(shouldExpand:)))
         tap.numberOfTapsRequired = 1
