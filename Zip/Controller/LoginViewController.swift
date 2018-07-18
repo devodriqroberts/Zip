@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-
+// Dismiss login screen
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
