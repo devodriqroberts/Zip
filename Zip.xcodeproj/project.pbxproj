@@ -25,6 +25,9 @@
 		25FAFC2020FED0800002E9F7 /* RoundedCornerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FAFC1F20FED0800002E9F7 /* RoundedCornerTextField.swift */; };
 		25FAFC2220FEDEB30002E9F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25FAFC2120FEDEB30002E9F7 /* GoogleService-Info.plist */; };
 		25FAFC2520FEE1690002E9F7 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FAFC2420FEE1690002E9F7 /* DataService.swift */; };
+		25FAFC2721002F2D0002E9F7 /* TextFieldEffects in Resources */ = {isa = PBXBuildFile; fileRef = 25FAFC2621002F2C0002E9F7 /* TextFieldEffects */; };
+		25FAFC2921013EED0002E9F7 /* LoginAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FAFC2821013EED0002E9F7 /* LoginAlerts.swift */; };
+		25FAFC2B21015E700002E9F7 /* AuthenticateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FAFC2A21015E700002E9F7 /* AuthenticateUser.swift */; };
 		7C08D37EEE191BE6FABF089E /* Pods_Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61B9EEFD330A4DD597DFA4A /* Pods_Zip.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +53,9 @@
 		25FAFC1F20FED0800002E9F7 /* RoundedCornerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerTextField.swift; sourceTree = "<group>"; };
 		25FAFC2120FEDEB30002E9F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		25FAFC2420FEE1690002E9F7 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		25FAFC2621002F2C0002E9F7 /* TextFieldEffects */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TextFieldEffects; sourceTree = "<group>"; };
+		25FAFC2821013EED0002E9F7 /* LoginAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlerts.swift; sourceTree = "<group>"; };
+		25FAFC2A21015E700002E9F7 /* AuthenticateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateUser.swift; sourceTree = "<group>"; };
 		C61B9EEFD330A4DD597DFA4A /* Pods_Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF41545887727725372C4AC9 /* Pods-Zip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zip.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zip/Pods-Zip.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +121,8 @@
 		25FAFBFD20FD74A70002E9F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				25FAFC2821013EED0002E9F7 /* LoginAlerts.swift */,
+				25FAFC2A21015E700002E9F7 /* AuthenticateUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				25FAFBE920FD65AC0002E9F7 /* AppDelegate.swift */,
+				25FAFC2621002F2C0002E9F7 /* TextFieldEffects */,
 				25FAFBF020FD65AD0002E9F7 /* Assets.xcassets */,
 				25FAFBF220FD65AD0002E9F7 /* LaunchScreen.storyboard */,
 			);
@@ -247,6 +256,7 @@
 				25FAFC2220FEDEB30002E9F7 /* GoogleService-Info.plist in Resources */,
 				25FAFBF120FD65AD0002E9F7 /* Assets.xcassets in Resources */,
 				25FAFBEF20FD65AC0002E9F7 /* Main.storyboard in Resources */,
+				25FAFC2721002F2D0002E9F7 /* TextFieldEffects in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +320,7 @@
 				25FAFC0E20FD7FF90002E9F7 /* CircleViews.swift in Sources */,
 				25FAFC1C20FEA95A0002E9F7 /* UIViewExtension.swift in Sources */,
 				25FAFC0920FD7DCC0002E9F7 /* RoundImageView.swift in Sources */,
+				25FAFC2921013EED0002E9F7 /* LoginAlerts.swift in Sources */,
 				25FAFC0B20FD7ED00002E9F7 /* RoundedShadowView.swift in Sources */,
 				25FAFBEA20FD65AC0002E9F7 /* AppDelegate.swift in Sources */,
 				25FAFC1220FD86D60002E9F7 /* HomeViewController.swift in Sources */,
@@ -318,6 +329,7 @@
 				25FAFC2020FED0800002E9F7 /* RoundedCornerTextField.swift in Sources */,
 				25FAFC1920FD963D0002E9F7 /* CenterVcDelegate.swift in Sources */,
 				25FAFC0120FD751F0002E9F7 /* GradientView.swift in Sources */,
+				25FAFC2B21015E700002E9F7 /* AuthenticateUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

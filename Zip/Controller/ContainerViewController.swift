@@ -33,7 +33,12 @@ class ContainerViewController: UIViewController {
     var drawerVC: PanelDrawerViewController!
     var isHidden = false
     var centerController: UIViewController!
-    let centerPanelExpandedOffset: CGFloat = 160
+    var centerPanelExpandedOffset: CGFloat {
+        let viewWidth = UIStoryboard.homeViewController()?.view.frame.width
+            return viewWidth! * 0.42
+    }
+
+
     var tap: UITapGestureRecognizer!
     
     override func viewDidLoad() {

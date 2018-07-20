@@ -89,7 +89,6 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="SV5-DZ-1Pa" secondAttribute="trailing" constant="16" id="6mg-U9-wJ7"/>
                                     <constraint firstAttribute="height" constant="85" id="94j-be-lCy"/>
-                                    <constraint firstItem="SV5-DZ-1Pa" firstAttribute="centerX" secondItem="wW4-M9-JsT" secondAttribute="centerX" id="GYf-iB-Qxv"/>
                                     <constraint firstItem="SV5-DZ-1Pa" firstAttribute="leading" secondItem="wW4-M9-JsT" secondAttribute="leading" constant="16" id="HDK-7o-rWX"/>
                                     <constraint firstItem="SV5-DZ-1Pa" firstAttribute="top" secondItem="wW4-M9-JsT" secondAttribute="top" constant="5" id="HmH-xU-vJd"/>
                                 </constraints>
@@ -330,7 +329,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="malte-schmidt-474904-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="ceq-IP-LVA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                             </imageView>
-                            <visualEffectView opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Kr-Gp-ZjQ">
+                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Kr-Gp-ZjQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="f4P-hc-UvD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
@@ -349,7 +348,7 @@
                                     <action selector="closeButtonPressed:" destination="Vdg-Ij-GE0" eventType="touchUpInside" id="5ah-08-PGr"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WJ3-Ih-AeN">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WJ3-Ih-AeN">
                                 <rect key="frame" x="62.666666666666657" y="203" width="249.99999999999997" height="406"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcQ-6S-dyG">
@@ -370,13 +369,13 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up or Login to request a ride with Zip. Get where you want to go without the hassel." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlX-aT-sXV">
-                                        <rect key="frame" x="0.0" y="97.333333333333314" width="250" height="74"/>
+                                        <rect key="frame" x="0.0" y="77.333333333333314" width="250" height="74"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                         <color key="textColor" white="0.96999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bQn-jE-yNO">
-                                        <rect key="frame" x="0.3333333333333286" y="203" width="249.33333333333337" height="41"/>
+                                        <rect key="frame" x="0.3333333333333286" y="162.66666666666669" width="249.33333333333337" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="P6b-VK-X4F"/>
                                         </constraints>
@@ -386,32 +385,63 @@
                                         </segments>
                                         <color key="tintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bW0-oM-XW5">
-                                        <rect key="frame" x="0.3333333333333286" y="274.33333333333331" width="249.33333333333337" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="554-Ly-Thd"/>
-                                        </constraints>
+                                    <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qky-Cr-hG3">
+                                        <rect key="frame" x="0.3333333333333286" y="214.33333333333331" width="249.33333333333337" height="41"/>
+                                        <segments>
+                                            <segment title="Login"/>
+                                            <segment title="Register"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="loginRegisterSegControl:" destination="Vdg-Ij-GE0" eventType="valueChanged" id="VPC-ge-4lU"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2pX-dG-Le4" userLabel="Name Text Field">
+                                        <rect key="frame" x="0.3333333333333286" y="266" width="249.33333333333337" height="39"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jtr-Tm-xTY">
-                                        <rect key="frame" x="0.3333333333333286" y="356" width="249.33333333333337" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="nU9-YX-A0t"/>
-                                        </constraints>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bW0-oM-XW5" customClass="IsaoTextField">
+                                        <rect key="frame" x="0.3333333333333286" y="316.33333333333337" width="249.33333333333337" height="39"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                <color key="value" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                                <color key="value" red="0.0" green="0.56078431370000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jtr-Tm-xTY" customClass="IsaoTextField">
+                                        <rect key="frame" x="0.3333333333333286" y="367" width="249.33333333333337" height="39"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                                <color key="value" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bQn-jE-yNO" secondAttribute="trailing" id="IiC-LM-BH2"/>
+                                    <constraint firstItem="2pX-dG-Le4" firstAttribute="width" secondItem="bW0-oM-XW5" secondAttribute="width" id="ML1-87-iPl"/>
                                     <constraint firstAttribute="trailing" secondItem="jtr-Tm-xTY" secondAttribute="trailing" id="ULw-Rv-9bD"/>
                                     <constraint firstItem="bW0-oM-XW5" firstAttribute="leading" secondItem="WJ3-Ih-AeN" secondAttribute="leading" id="YI2-y6-XVG"/>
+                                    <constraint firstItem="Qky-Cr-hG3" firstAttribute="height" secondItem="bQn-jE-yNO" secondAttribute="height" id="bF4-Dl-rN9"/>
                                     <constraint firstItem="jtr-Tm-xTY" firstAttribute="leading" secondItem="WJ3-Ih-AeN" secondAttribute="leading" id="dDS-2i-aHr"/>
                                     <constraint firstItem="bQn-jE-yNO" firstAttribute="leading" secondItem="WJ3-Ih-AeN" secondAttribute="leading" id="e0j-iL-mCu"/>
                                     <constraint firstAttribute="trailing" secondItem="bW0-oM-XW5" secondAttribute="trailing" id="gT2-KL-sT4"/>
+                                    <constraint firstItem="jtr-Tm-xTY" firstAttribute="height" secondItem="bW0-oM-XW5" secondAttribute="height" id="jva-mH-nJE"/>
+                                    <constraint firstItem="Qky-Cr-hG3" firstAttribute="width" secondItem="bQn-jE-yNO" secondAttribute="width" id="u1l-Jc-i5G"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aF2-NI-kaz" customClass="RoundedShadowButton" customModule="Zip" customModuleProvider="target">
@@ -424,6 +454,9 @@
                                 <state key="normal" title="Sign Up / Login">
                                     <color key="titleColor" red="0.0" green="0.5607843137254902" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="authButtonPressed:" destination="Vdg-Ij-GE0" eventType="touchUpInside" id="dX7-2D-cOY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -448,6 +481,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FUD-vF-H6Z"/>
                     </view>
+                    <connections>
+                        <outlet property="authButton" destination="aF2-NI-kaz" id="Qdr-9I-dNz"/>
+                        <outlet property="emailTextField" destination="bW0-oM-XW5" id="lXX-Sg-2ca"/>
+                        <outlet property="loginRegisterSegControl" destination="Qky-Cr-hG3" id="qIU-1J-6Rz"/>
+                        <outlet property="nameTextField" destination="2pX-dG-Le4" id="CeO-aM-tB0"/>
+                        <outlet property="passDriverSegControl" destination="bQn-jE-yNO" id="kcK-Qt-HWp"/>
+                        <outlet property="passwordTextField" destination="jtr-Tm-xTY" id="HXW-jZ-F07"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7E-tw-gIw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

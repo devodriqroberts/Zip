@@ -10,7 +10,8 @@ import Foundation
 import Firebase
 
 
-let DB_BASE = Database.database().reference()
+
+let DB_BASE = Database.database().reference(fromURL: "https://zipapp-29b5f.firebaseio.com/")
 
 class DataService {
     
@@ -49,9 +50,21 @@ class DataService {
         
         //Check if user is driver and updates user data for appropriate user
         if isDriver {
-            REF_DRIVERS.child(uid).updateChildValues(userData)
+            REF_DRIVERS.child(uid).updateChildValues(userData) { (error, user) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                print("Saved driver data successfully")
+            }
         } else {
-            REF_USERS.child(uid).updateChildValues(userData)
+            REF_USERS.child(uid).updateChildValues(userData) { (error, user) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                print("Saved passenger data successfully")
+            }
         }
     }
 }
