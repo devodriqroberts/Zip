@@ -22,15 +22,9 @@ struct Alert {
         }
     }
     
-    static func showIncompleteFormAlert(on vc: UIViewController) {
-        let message = "Incomplete text field. Please enter email and/or valid password."
-        
-        if loginVc.emailTextField.text != nil && loginVc.passwordTextField.text != nil {
-            return
-        } else {
-            
-            showBasicAlert(on: vc, with: "Incomplete Text Field", message: message)
-        }
+    
+    static func showLoginErrorAlert(on vc: UIViewController, error: NSError) {
+        showBasicAlert(on: vc, with: "Error signing in.", message: error.localizedDescription)
     }
 }
 
