@@ -22,16 +22,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let ds = DataService()
     var nameTextFieldHeightAnchor: NSLayoutConstraint?
+    weak var updateDelegate: UpdateDisplayDelegate?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+       passDriverSegControl.isHidden = true
         emailTextField.delegate = self
         passwordTextField.delegate = self
         loginRegisterSegControl.selectedSegmentIndex = 0
-        passDriverSegControl.selectedSegmentIndex = 0
+        //passDriverSegControl.selectedSegmentIndex = 0
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalToConstant: 0)
         nameTextFieldHeightAnchor?.isActive = true
@@ -63,15 +64,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginRegisterSegControl(_ sender: UISegmentedControl) {
         setLoginRegisterbuttonTitle(with: sender.selectedSegmentIndex)
         self.nameTextFieldHeightAnchor?.isActive = false
-        if sender.tag == 1 {
-            
-            if sender.selectedSegmentIndex == 0 {
-                nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalToConstant: 0)
-                nameTextFieldHeightAnchor?.isActive = true
-            } else {
-                nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalToConstant: 40)
-                nameTextFieldHeightAnchor?.isActive = true
-            }
+        
+        var senderIndex: Int {
+            let index = sender.selectedSegmentIndex
+            return index
+        }
+        
+        if senderIndex == 0 {
+            nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalToConstant: 0)
+            nameTextFieldHeightAnchor?.isActive = true
+            passDriverSegControl.isHidden = true
+        } else {
+            nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalToConstant: 40)
+            nameTextFieldHeightAnchor?.isActive = true
+            passDriverSegControl.selectedSegmentIndex = 0
+            passDriverSegControl.isHidden = false
         }
     }
     
@@ -97,7 +104,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             var userData = [String:Any]()
             
             //Check if login / register segmented control is on register
-            if loginRegisterSegControl.selectedSegmentIndex == 0 && passDriverSegControl.selectedSegmentIndex == 0 {
+            if loginRegisterSegControl.selectedSegmentIndex == 0 {
                 
                 
                 
@@ -118,34 +125,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //                            let userData = ["provider":user.additionalUserInfo?.providerID, "name": name] as [String:Any]
 //                            self.ds.createFirebaseDBUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData, isDriver: false)
                             self.animateAuthButton()
-                        self.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true)
+                        print("Auth 1 successful")
                     }
                 }
-                
-            } else if loginRegisterSegControl.selectedSegmentIndex == 0 && passDriverSegControl.selectedSegmentIndex == 1 {
-                
-                Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                    if error != nil {
-                        guard let error = error else {return}
-                        self.showError(ofType: error)
-                        print(error)
-                        print("cannot sign in driver")
-                        return
-                    }
-                    // successfully authenticated user
-                    let user = Auth.auth().currentUser
-                    if let user = user {
-                       let uid = user.uid
-                        print(uid)
-                           // let userData = ["provider":user.additionalUserInfo?.providerID, "userIsDriver": true, "isPickUpModeEnabled": false, "driverIsOnTrip": false, "name": name] as [String:Any]
-                            //self.ds.createFirebaseDBUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData, isDriver: true)
-                            self.animateAuthButton()
-                            self.dismiss(animated: true, completion: nil)
-                        
-                    }
-                }
-                print("Auth successful")
-                self.dismiss(animated: true, completion: nil)
                 
             } else if loginRegisterSegControl.selectedSegmentIndex == 1 && (passDriverSegControl.selectedSegmentIndex == 0 || passDriverSegControl.selectedSegmentIndex == 1) {
                 
@@ -166,7 +149,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 if let error = error {
                                     print(error)
                                 }
-                                print(user.displayName!)
+                                self.dismiss(animated: true, completion: nil)
+                                print("Create USer")
                             })
                         
                         if self.passDriverSegControl.selectedSegmentIndex == 0 {
@@ -179,12 +163,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             
                         }
                         self.animateAuthButton()
+                        self.reloadInputViews()
                     }
-                    print("Auth successful")
+                    print("Auth 3 successful")
                     guard let name = userData["name"] as? String else {return}
-                    self.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
                     print(name)
                 }
+                updateDelegate?.updateDisplayName(withName: name)
             }
             
         }

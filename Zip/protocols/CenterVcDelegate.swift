@@ -16,7 +16,9 @@ protocol CenterVCDelegate: class {
 }
 
 
-
+protocol UpdateDisplayDelegate: class {
+    func updateDisplayName(withName name: String)
+}
 
 
 

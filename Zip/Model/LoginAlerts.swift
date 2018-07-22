@@ -14,7 +14,7 @@ let loginVc = LoginViewController()
 
 struct Alert {
     
-    private static func showBasicAlert(on vc: UIViewController, with title: String, message: String) {
+    private static func showBasicAlert(on vc: UIViewController, with title: String, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         DispatchQueue.main.async {
@@ -25,6 +25,10 @@ struct Alert {
     
     static func showLoginErrorAlert(on vc: UIViewController, error: NSError) {
         showBasicAlert(on: vc, with: "Error signing in.", message: error.localizedDescription)
+    }
+    
+    static func showSearchErrorAlert(on vc: UIViewController, message: String?) {
+        showBasicAlert(on: vc, with: "No Results Found", message: message)
     }
 }
 

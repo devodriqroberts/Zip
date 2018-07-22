@@ -21,6 +21,7 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
     
     let loginVC = LoginViewController()
     let user = Auth.auth().currentUser
+    let userSignOut = Auth.auth().signOut
     let currentUserID = Auth.auth().currentUser?.uid
     let appDelegate = AppDelegate.getAppDelegate()
 
@@ -29,11 +30,15 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+       
     }
+    
+  
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      
+        
+     
         
         onlineModeSwitch.isOn = false
         onlineModeEnabledLabel.text = "OFFLINE"
@@ -41,6 +46,9 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
         onlineModeSwitch.isHidden = true
         observeUserType()
        
+        
+        
+        
         
         if user == nil {
             userGreetingLabel.text = ""
@@ -55,7 +63,7 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
             userAccountTypeLabel.text = ""
             userProfileImageView.isHidden = false
             loginLogoutButton.setTitle("Logout", for: .normal)
-            
+
         }
     }
     
@@ -63,7 +71,7 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
         DataService.instance.REF_USERS.observeSingleEvent(of: .value) { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
-                    if snap.key == Auth.auth().currentUser?.uid {
+                    if snap.key == self.user?.uid {
                         self.userAccountTypeLabel.text = "PASSENGER"
                         self.onlineModeEnabledLabel.heightAnchor.constraint(equalToConstant: 0)
                         
@@ -74,7 +82,7 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
         DataService.instance.REF_DRIVERS.observeSingleEvent(of: .value) { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
-                    if snap.key == Auth.auth().currentUser?.uid {
+                    if snap.key == self.user?.uid {
                         self.userAccountTypeLabel.text = "DRIVER"
                         self.onlineModeSwitch.isHidden = false
                         
@@ -99,15 +107,20 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
    
     @IBAction func signupLoginButtonPressed(_ sender: UIButton) {
         
-        if user == nil {
+        var userStatus: User? {
+            let status = Auth.auth().currentUser
+            return status
+        }
+        
+        if userStatus == nil {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let loginVC = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
         
-            present(loginVC!, animated: true, completion: nil)
+            present(loginVC!, animated: true)
         } else {
             do {
-            try Auth.auth().signOut()
+            try userSignOut()
                 resetView()
             } catch (let error) {
                 self.showError(ofType: error)
@@ -115,6 +128,7 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
     @IBAction func switchWasToggled(_ sender: UISwitch) {
         if onlineModeSwitch.isOn {
             
@@ -144,7 +158,7 @@ class PanelDrawerViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-extension PanelDrawerViewController {
+extension PanelDrawerViewController: UpdateDisplayDelegate {
     
     func resetView() {
         userEmailLabel.text = ""
@@ -154,9 +168,11 @@ extension PanelDrawerViewController {
         onlineModeSwitch.isHidden = true
         onlineModeSwitch.isOn = false
         userGreetingLabel.text = "Hello, User!"
-        loginLogoutButton.setTitle("Sign Up / Login", for: .normal)
-       
-        
+        loginLogoutButton.setTitle("Sign Up / Login", for: .normal) 
+    }
+    
+    func updateDisplayName(withName name: String) {
+        userGreetingLabel.text = "Hello, \(name)!"
     }
     
 }
